@@ -20,8 +20,15 @@ async def greet(request:Request):
 @app.websocket("/ws")
 async def handle_websocket(web_socket:WebSocket):
     await web_socket.accept() # wait for websocket to accept the connection
+    print("Client connected...")
     while True:
-        data = await web_socket.receive_bytes()
-        await web_socket.send_text("Hello World!!!")
+        try:
+                data = await web_socket.receive_bytes()
+                print(f"len audio:  {len(data)}")
+        except Exception as e:
+            print("❌ occur during the setup of websocket connection")
+        finally:
+            print("Websocket disconnected.....")
+        
     
     
