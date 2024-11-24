@@ -1,0 +1,119 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    background-color: #1a1333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.orb-container {
+    position: relative;
+    width: 256px;
+    height: 256px;
+    margin-bottom: 64px;
+}
+
+.glow-effect {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(168,85,247,0.2) 0%, rgba(59,130,246,0.2) 50%, rgba(236,72,153,0.2) 100%);
+    filter: blur(20px);
+    transition: opacity 1s;
+}
+
+.main-orb {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.inner-gradient {
+    position: absolute;
+    inset: 16px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #60a5fa, #a855f7, #4ade80);
+    transition: transform 1s ease-out;
+    animation: pulse 2s infinite alternate;
+}
+
+.inner-gradient::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.9); }
+    100% { transform: scale(1.1); }
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 64px;
+    background-color: rgba(107, 114, 128, 0.3);
+    border-radius: 32px;
+    padding: 4px;
+    overflow: hidden;
+}
+
+.slider-fill {
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: 4px;
+    background-color: rgba(59, 130, 246, 0.5);
+    border-radius: 28px;
+    transition: right 0.3s;
+}
+
+.slider-button {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    height: 56px;
+    width: 56px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    transition: left 0.3s;
+}
+
+.slider-button svg {
+    width: 24px;
+    height: 24px;
+    transition: fill 0.3s;
+}
+
+.slider-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+}
